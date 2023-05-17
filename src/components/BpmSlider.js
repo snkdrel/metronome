@@ -1,7 +1,13 @@
 import React from 'react';
 
 function BpmSlider() {
-    return (<></>);
+    return (
+        <div>
+            <button>-</button>
+            <input type='range'></input>
+            <button>+</button>
+        </div>
+    );
 }
 
 export default BpmSlider;
