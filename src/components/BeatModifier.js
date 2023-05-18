@@ -1,12 +1,12 @@
 import React from 'react';
 
-function BeatModifier() {
+function BeatModifier({beats, onBeatsDecrement, onBeatsIncrement}) {
     return (
-        <div>
+        <div className='beat-modifier'>
             <div>Beats</div>
-            <button>-</button>
-            <div>4</div>
-            <button>+</button>
+            <button onClick={onBeatsDecrement}>-</button>
+            <div>{beats}</div>
+            <button onClick={onBeatsIncrement}>+</button>
         </div>
     );
 }

@@ -9,15 +9,27 @@ function MetronomeContainer() {
     const [bpms, setBpms] = useState(60);
     const [beats, setBeats] = useState(4);
 
-    function increaseBpms(){
+    function increaseBpms() {
         if(bpms < 240) {
             setBpms(bpms + 1);
         }
     }
 
-    function decreaseBpm(){
+    function decreaseBpm() {
         if(bpms > 20) {
             setBpms(bpms - 1);
+        }
+    }
+
+    function increaseBeats() {
+        if(beats < 12) {
+            setBeats(beats + 1);
+        }
+    }
+
+    function decreaseBeats() {
+        if(beats > 1) {
+            setBeats(beats - 1);
         }
     }
 
@@ -30,7 +42,9 @@ function MetronomeContainer() {
                 onBpmsDecrement={decreaseBpm} />
             <BeatDisplay beats={beats} />
             <Player />
-            <BeatModifier />
+            <BeatModifier beats={beats}
+                onBeatsIncrement={increaseBeats} 
+                onBeatsDecrement={decreaseBeats} />
         </>
     );
 }

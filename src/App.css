@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.beat-display {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.beat-square {
+  width: 1rem;
+  height: 1rem;
+  border: 0.1rem solid black;
+}
+
+.beat-modifier {
+  display: flex;
+}
