@@ -41,7 +41,7 @@ function MetronomeContainer() {
                 onBpmsIncrement={increaseBpms} 
                 onBpmsDecrement={decreaseBpm} />
             <BeatDisplay beats={beats} />
-            <Player />
+            <Player bpms={bpms} beats={beats}/>
             <BeatModifier beats={beats}
                 onBeatsIncrement={increaseBeats} 
                 onBeatsDecrement={decreaseBeats} />
