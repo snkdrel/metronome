@@ -14,17 +14,16 @@ function MetronomeContainer() {
     const [weakClick] = useState(new Audio(weakPulseAudioUrl));
     const [isPlaying, setIsPlaying] = useState(false);
     const [idInterval, setIdInterval] = useState(null);
+    const [currentBeat, setCurrentBeat] = useState(1);
 
     // ---- Audio player --------
     async function playAudio(actualBpm) {
         const delayTime = 60 / actualBpm * 1000;
-        console.log(actualBpm);
 
         // setInterval waits delayTime seconds to run playClick for the first time, 
         // so we run it first to avoid waiting the initial click
         playClick();
-        setIdInterval(setInterval(playClick, delayTime));
-
+        setIdInterval(setInterval(playClick(), delayTime));
         setIsPlaying(true);
     }
 
@@ -37,6 +36,7 @@ function MetronomeContainer() {
         clearInterval(idInterval);
         setIsPlaying(false);
         setIdInterval(null);
+        setCurrentBeat(1);
     }
 
     function updateClickInterval(newBpm){
@@ -86,7 +86,7 @@ function MetronomeContainer() {
                 onBpmsChange={handleBpmsChange} 
                 onBpmsIncrement={increaseBpms} 
                 onBpmsDecrement={decreaseBpm} />
-            <BeatDisplay beats={beats} />
+            <BeatDisplay beats={beats} currentBeat={currentBeat}/>
             <Player isPlaying={isPlaying} 
                 onClickStart={() => playAudio(bpms)} 
                 onClickStop={stopAudio}/>

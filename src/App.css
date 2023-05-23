@@ -51,3 +51,7 @@
 .beat-modifier {
   display: flex;
 }
+
+.current-beat {
+  background-color: black;
+}
