@@ -1,29 +1,10 @@
-import React, {useState} from 'react';
-import strongPulseAudioUrl from '../media/strong-pulse.ogg';
-import weakPulseAudioUrl from '../media/weak-pulse.ogg';
+import React, {useEffect, useState} from 'react';
 
-function Player({bpms, beats}) {
-    const [strongClick] = useState(new Audio(strongPulseAudioUrl));
-    const [weakClick] = useState(new Audio(weakPulseAudioUrl));
-    
-    // function delay (ms) {
-    //     return new Promise(resolve => {
-    //         setTimeout(resolve, ms);
-    //     });
-    // }
-
-    async function playAudio() {
-        const delayTime = 60 / bpms * 1000;
-
-        setInterval(() => {
-            weakClick.load();
-            weakClick.play();
-        }, delayTime);
-    }
+function Player({isPlaying, onClickStart, onClickStop}) {
 
     return (
         <>
-            <button onClick={playAudio}>Start</button>
+            <button onClick={isPlaying ? onClickStop : onClickStart}>{isPlaying ? 'Stop' : 'Start'}</button>
         </>
     );
 }
