@@ -17,19 +17,36 @@ function MetronomeContainer() {
     const [currentBeat, setCurrentBeat] = useState(1);
 
     // ---- Audio player --------
-    async function playAudio(actualBpm) {
+    async function playAudio(actualBpm, actualBeats) {
         const delayTime = 60 / actualBpm * 1000;
+        let beat = 1;
 
         // setInterval waits delayTime seconds to run playClick for the first time, 
         // so we run it first to avoid waiting the initial click
-        playClick();
-        setIdInterval(setInterval(playClick(), delayTime));
+        playClick(beat);
+        setIdInterval(setInterval(() => {
+            if(beat >= actualBeats) {
+                beat = 1;
+            } else {
+                beat++;
+            }
+            playClick(beat);
+            setCurrentBeat(beat);
+        }, delayTime));
         setIsPlaying(true);
     }
 
-    function playClick() {
-        weakClick.currentTime = 0;
-        weakClick.play();
+    function playClick(beat) {
+        console.log(beat);
+        if(beat === 1) {
+            weakClick.currentTime = 0;
+            strongClick.currentTime = 0;
+            strongClick.play();
+        } else {
+            strongClick.currentTime = 0;
+            weakClick.currentTime = 0;
+            weakClick.play();
+        }
     }
 
     function stopAudio() {
@@ -39,10 +56,10 @@ function MetronomeContainer() {
         setCurrentBeat(1);
     }
 
-    function updateClickInterval(newBpm){
+    function updateClickInterval(newBpm, newBeats){
         if(isPlaying) {
             stopAudio();
-            playAudio(newBpm);
+            playAudio(newBpm, newBeats);
         }
     }
 
@@ -50,32 +67,34 @@ function MetronomeContainer() {
     function increaseBpms() {
         if(bpms < 240) {
             setBpms(bpms + 1);
-            updateClickInterval(bpms + 1);
+            updateClickInterval(bpms + 1, beats);
         }
     }
 
     function decreaseBpm() {
         if(bpms > 20) {
             setBpms(bpms - 1);
-            updateClickInterval(bpms - 1);
+            updateClickInterval(bpms - 1, beats);
         }
     }
 
     function handleBpmsChange(newBpm) {
         setBpms(newBpm);
-        updateClickInterval(newBpm);
+        updateClickInterval(newBpm, beats);
     }
 
     // --- beats ----
     function increaseBeats() {
         if(beats < 12) {
             setBeats(beats + 1);
+            updateClickInterval(bpms, beats + 1);
         }
     }
 
     function decreaseBeats() {
         if(beats > 1) {
             setBeats(beats - 1);
+            updateClickInterval(bpms, beats - 1);
         }
     }
 
@@ -88,7 +107,7 @@ function MetronomeContainer() {
                 onBpmsDecrement={decreaseBpm} />
             <BeatDisplay beats={beats} currentBeat={currentBeat}/>
             <Player isPlaying={isPlaying} 
-                onClickStart={() => playAudio(bpms)} 
+                onClickStart={() => playAudio(bpms, beats)} 
                 onClickStop={stopAudio}/>
             <BeatModifier beats={beats}
                 onBeatsIncrement={increaseBeats} 
