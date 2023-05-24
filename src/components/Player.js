@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 function Player({isPlaying, onClickStart, onClickStop}) {
 
     return (
         <>
-            <button onClick={isPlaying ? onClickStop : onClickStart}>{isPlaying ? 'Stop' : 'Start'}</button>
+            <button onClick={isPlaying ? onClickStop : onClickStart} className='start-button'>
+                {isPlaying ? 'Stop' : 'Start'}
+            </button>
         </>
     );
 }

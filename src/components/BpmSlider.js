@@ -2,7 +2,7 @@ import React from 'react';
 
 function BpmSlider({ bpms, onBpmsChange, onBpmsIncrement, onBpmsDecrement }) {
     return (
-        <div>
+        <div className='bpm-slider'>
             <button onClick={onBpmsDecrement}>-</button>
             <input type='range' 
                 value={bpms} 

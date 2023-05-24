@@ -2,7 +2,7 @@ import React from 'react';
 
 function BpmDisplay({bpms}) {
     return (
-        <div>{bpms}</div>
+        <div className='bpm-display'>{bpms}</div>
     );
 }
 
