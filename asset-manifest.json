@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/metronome/static/css/main.5974a810.css",
+    "main.js": "/metronome/static/js/main.b8b94c33.js",
+    "static/js/787.fbc2f15a.chunk.js": "/metronome/static/js/787.fbc2f15a.chunk.js",
+    "static/media/strong-pulse.ogg": "/metronome/static/media/strong-pulse.cb8947f1f19fcd9add05.ogg",
+    "static/media/weak-pulse.ogg": "/metronome/static/media/weak-pulse.4c3d09aab63fa1b83a77.ogg",
+    "index.html": "/metronome/index.html",
+    "main.5974a810.css.map": "/metronome/static/css/main.5974a810.css.map",
+    "main.b8b94c33.js.map": "/metronome/static/js/main.b8b94c33.js.map",
+    "787.fbc2f15a.chunk.js.map": "/metronome/static/js/787.fbc2f15a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5974a810.css",
+    "static/js/main.b8b94c33.js"
+  ]
+}
