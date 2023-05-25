@@ -6,7 +6,11 @@ function BeatDisplay({beats, currentBeat}) {
             {
                 [...Array(beats)].map((e, index) => {
                     if(index + 1 === currentBeat){
-                        return <div className='beat-square current-beat' key={index}></div>;
+                        if(currentBeat === 1) {
+                            return <div className='beat-square current-beat first-beat' key={index}></div>;
+                        } else {
+                            return <div className='beat-square current-beat' key={index}></div>;
+                        }
                     } else {
                         return <div className='beat-square' key={index}></div>;
                     }

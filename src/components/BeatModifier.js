@@ -5,7 +5,7 @@ function BeatModifier({beats, onBeatsDecrement, onBeatsIncrement}) {
         <div className='beat-modifier'>
             <div>Beats: </div>
             <button onClick={onBeatsDecrement}>-</button>
-            <div>{beats}</div>
+            <div className='number-of-current-beats'>{beats}</div>
             <button onClick={onBeatsIncrement}>+</button>
         </div>
     );

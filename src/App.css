@@ -1,3 +1,15 @@
+:root {
+  --background-page: #A8DADC;
+  --bpm-text: #E63946;
+  --background-button: #457B9D;
+  --text-button: #F1FAEE;
+  --beat-text: #1D3557;
+}
+
+body {
+  background-color: var(--background-page);
+}
+
 #root {
   position: absolute;
   top: 50%;
@@ -9,14 +21,39 @@
 }
 
 .bpm-display {
-  font-size: 7rem;
   margin: 1rem;
+  text-align: center;
+  color: var(--bpm-text);
+  background-color: #457B9D;
+  border-radius: 90%;
+  width: 12rem;
+  height: 12rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.current-bpm {
+  font-size: 7rem;
+}
+
+.bpm-title {
+  font-size: 1.5rem;
 }
 
 .bpm-slider {
   display: flex;
+  align-items: center;
   gap: 0.7rem;
   margin: 1rem;
+}
+
+.bpm-slider > button {
+  background-color: var(--background-button);
+  color: var(--text-button);
+  padding: 0.2rem 0.7rem;
+  font-size: 1rem;
 }
 
 .beat-display {
@@ -36,16 +73,42 @@
 .start-button {
   margin: 0.5rem;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
-  font-size: 1rem;
+  font-size: 1.3rem;
+  background-color: #F1FAEE;
+  color: #1D3557;
 }
 
 .beat-modifier {
   display: flex;
   gap: 0.7rem;
-  margin: 0.5rem;
+  margin: 1rem;
   font-size: 1.2rem;
+  color: var(--beat-text);
+  text-align: center;
+  align-items: center;
+}
+
+.number-of-current-beats {
+  color: #E63946;
+}
+
+.beat-modifier > button {
+  background-color: var(--background-button);
+  color: var(--text-button);
+  padding: 0.2rem 0.7rem;
+  font-size: 1rem;
 }
 
 .current-beat {
-  background-color: black;
+  background-color: #1D3557;
+}
+
+.first-beat {
+ background-color: #E63946;
+}
+
+/* slider */
+input[type="range"] {
+  width: 13rem;
+  height: 1rem;
 }
